@@ -107,3 +107,115 @@ footer {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAYKUŞ FK</title>
+
+<style>
+body {
+    margin: 0;
+    background: #06101f;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.logo {
+    width: 220px;
+    max-width: 80%;
+    margin-top: 35px;
+    filter: drop-shadow(0 0 15px #ff9900);
+    transition: 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.08);
+}
+
+h1 {
+    font-size: 45px;
+    color: #ff9900;
+    text-shadow: 0 0 15px #ff9900;
+}
+
+.card {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #0b1728;
+    border: 1px solid #ff9900;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #162d42;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff9900, #00a99d);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ff9900;
+}
+
+#saat {
+    font-size: 25px;
+    color: #00e6d0;
+    margin: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BAYKUŞ FK LOGOSU -->
+<img src="logo.png" class="logo" alt="BAYKUŞ FK Logo">
+
+<h1>BAYKUŞ FK</h1>
+<p>🦉 RESMİ TAKIM SİTESİ ⚽</p>
+
+<div id="saat"></div>
+
+<div class="card">
+    <h2>🦉 Hoş Geldiniz!</h2>
+    <p>BAYKUŞ FK'nın resmi internet sitesine hoş geldiniz!</p>
+</div>
+
+<div class="card">
+    <h2>📱 Instagram</h2>
+    <p>Bizi Instagram'dan takip et!</p>
+
+    <a href="https://www.instagram.com/osmanefeozturkk1/" target="_blank">
+        <button>📸 Instagram'a Git</button>
+    </a>
+</div>
+
+<script>
+function saatGuncelle() {
+    const simdi = new Date();
+
+    document.getElementById("saat").textContent =
+        simdi.toLocaleTimeString("tr-TR", {
+            timeZone: "Europe/Istanbul",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+}
+
+saatGuncelle();
+setInterval(saatGuncelle, 1000);
+</script>
+
+</body>
+</html>
