@@ -1,112 +1,415 @@
-<img src="logo.png" alt="BAYKUŞ FK" class="logo">
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BAYKUŞ FK</title>
+
+<title>BAYKUŞ FK OFFICIAL</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    background: #06101f;
-    color: white;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
+    color: white;
     text-align: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,200,.12), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,140,0,.10), transparent 25%),
+        #05080d;
+    overflow-x: hidden;
+}
+
+/* Hareketli arka plan */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .25;
+    z-index: -1;
+    animation: hareket 8s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #00ffd5;
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    background: #ff8c00;
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes hareket {
+    from {
+        transform: translate(0,0);
+    }
+    to {
+        transform: translate(100px,60px);
+    }
+}
+
+/* Üst bölüm */
+.hero {
+    padding: 60px 20px 45px;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.65),
+        rgba(5,8,13,.2)
+    );
 }
 
 .logo {
-    width: 220px;
-    max-width: 80%;
-    margin-top: 35px;
-    filter: drop-shadow(0 0 15px #ff9900);
-    transition: 0.3s;
+    width: 190px;
+    max-width: 70%;
+    border-radius: 25px;
+    filter: drop-shadow(0 0 20px rgba(255,140,0,.7));
+    animation: logoGiris 1.2s ease;
+    transition: .3s;
 }
 
 .logo:hover {
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(2deg);
+    filter: drop-shadow(0 0 30px #ff8c00);
+}
+
+@keyframes logoGiris {
+    from {
+        opacity: 0;
+        transform: scale(.5) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
 }
 
 h1 {
-    font-size: 45px;
-    color: #ff9900;
-    text-shadow: 0 0 15px #ff9900;
+    margin: 25px 0 5px;
+    font-size: clamp(40px, 8vw, 70px);
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #00ffd5, #ffffff, #ff9d00);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: parilti 2s infinite alternate;
+}
+
+@keyframes parilti {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0,255,213,.4));
+    }
+    to {
+        filter: drop-shadow(0 0 18px rgba(255,157,0,.7));
+    }
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: .8;
+}
+
+/* Saat */
+.clock {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    border: 1px solid rgba(0,255,213,.5);
+    border-radius: 50px;
+    background: rgba(0,0,0,.4);
+    color: #00ffd5;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0,255,213,.15);
+}
+
+/* Kartlar */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
 .card {
-    max-width: 600px;
-    margin: 30px auto;
+    margin: 25px 0;
     padding: 30px;
-    background: #0b1728;
-    border: 1px solid #ff9900;
-    border-radius: 20px;
-    box-shadow: 0 0 20px #162d42;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 25px;
+    background: rgba(15,20,28,.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,.4);
+    transition: .3s;
+    animation: kartGiris .8s ease;
 }
 
-button {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff9900, #00a99d);
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,255,213,.5);
+    box-shadow: 0 15px 45px rgba(0,255,213,.12);
+}
+
+@keyframes kartGiris {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h2 {
+    color: #00ffd5;
+    margin-top: 0;
+}
+
+.card p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Instagram */
+.instagram {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 15px 28px;
+    border-radius: 50px;
+    text-decoration: none;
     color: white;
     font-size: 17px;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    background: linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+    box-shadow: 0 8px 25px rgba(214,41,118,.25);
+    transition: .3s;
 }
 
-button:hover {
+.instagram:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 20px #ff9900;
+    box-shadow: 0 0 30px rgba(214,41,118,.7);
 }
 
-#saat {
-    font-size: 25px;
-    color: #00e6d0;
-    margin: 20px;
+/* Genel buton */
+.button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 50px;
+    color: #061018;
+    background: #00ffd5;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #00ffd5;
+}
+
+/* Alt */
+footer {
+    margin-top: 50px;
+    padding: 30px 15px;
+    background: rgba(0,0,0,.5);
+    color: #aaa;
+}
+
+footer strong {
+    color: #00ffd5;
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+    .hero {
+        padding-top: 40px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .clock {
+        font-size: 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- BAYKUŞ FK LOGOSU -->
-<img src="logo.png" class="logo" alt="BAYKUŞ FK Logo">
+<!-- HERO -->
+<header class="hero">
 
-<h1>BAYKUŞ FK</h1>
-<p>🦉 RESMİ TAKIM SİTESİ ⚽</p>
+    <!-- LOGO -->
+    <img src="logo.png" class="logo" alt="BAYKUŞ FK Logo">
 
-<div id="saat"></div>
+    <h1>BAYKUŞ FK</h1>
 
-<div class="card">
-    <h2>🦉 Hoş Geldiniz!</h2>
-    <p>BAYKUŞ FK'nın resmi internet sitesine hoş geldiniz!</p>
-</div>
+    <div class="subtitle">
+        🦉 RESMİ TAKIM SİTESİ ⚽
+    </div>
 
-<div class="card">
-    <h2>📱 Instagram</h2>
-    <p>Bizi Instagram'dan takip et!</p>
+    <!-- CANLI SAAT -->
+    <div class="clock" id="clock">
+        00:00:00
+    </div>
 
-    <a href="https://www.instagram.com/osmanefeozturkk1/" target="_blank">
-        <button>📸 Instagram'a Git</button>
-    </a>
-</div>
+</header>
+
+
+<main class="container">
+
+    <!-- HOŞ GELDİN -->
+    <section class="card">
+        <h2>🦉 BAYKUŞ FK'YA HOŞ GELDİN!</h2>
+
+        <p>
+            BAYKUŞ FK'nın resmi internet sitesine hoş geldiniz.
+            Takımımız hakkında en güncel bilgilere buradan ulaşabilirsiniz.
+        </p>
+    </section>
+
+
+    <!-- LİG -->
+    <section class="card">
+        <h2>🏆 LİG DURUMU</h2>
+
+        <p>
+            Şu anda bir ligimiz yok.
+        </p>
+
+        <button class="button" onclick="tikSesi()">
+            ⚽ Çok Yakında
+        </button>
+    </section>
+
+
+    <!-- INSTAGRAM -->
+    <section class="card">
+
+        <h2>📱 INSTAGRAM</h2>
+
+        <p>
+            BAYKUŞ FK'yı Instagram'dan takip et!
+        </p>
+
+        <a
+            class="instagram"
+            href="https://www.instagram.com/osmanefeozturkk1/"
+            target="_blank"
+            onclick="tikSesi()"
+        >
+            📸 Instagram'a Git
+        </a>
+
+    </section>
+
+
+    <!-- TAKIM -->
+    <section class="card">
+
+        <h2>⚽ BAYKUŞ FK</h2>
+
+        <p>
+            🦉 Güçlü • Hızlı • Kararlı
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+    🦉 <strong>BAYKUŞ FK</strong> © 2026
+    <br><br>
+    Resmi Takım Sitesi
+</footer>
+
 
 <script>
+
+/* CANLI SAAT */
 function saatGuncelle() {
+
     const simdi = new Date();
 
-    document.getElementById("saat").textContent =
-        simdi.toLocaleTimeString("tr-TR", {
-            timeZone: "Europe/Istanbul",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        });
+    const saat = simdi.toLocaleTimeString("tr-TR", {
+        timeZone: "Europe/Istanbul",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    document.getElementById("clock").textContent = "🕐 " + saat;
 }
 
 saatGuncelle();
+
 setInterval(saatGuncelle, 1000);
+
+
+/* BUTON TIK SESİ */
+function tikSesi() {
+
+    const AudioContext =
+        window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
+    const audio = new AudioContext();
+
+    const oscillator = audio.createOscillator();
+    const gain = audio.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(
+        650,
+        audio.currentTime
+    );
+
+    gain.gain.setValueAtTime(
+        0.12,
+        audio.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audio.currentTime + 0.12
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audio.destination);
+
+    oscillator.start();
+    oscillator.stop(audio.currentTime + 0.12);
+}
+
 </script>
 
 </body>
