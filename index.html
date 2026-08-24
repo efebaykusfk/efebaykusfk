@@ -1,549 +1,669 @@
+
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BAYKUŞ FK 🦉⚽</title>
+<title>BAYKUŞ FK 🦉⚽</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.12), transparent 25%),
+        radial-gradient(circle at 10% 90%, rgba(120,120,120,.10), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,.08), transparent 25%),
+        #030303;
+}
+
+/* ARKA PLAN */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .18;
+    animation: moveOrb 12s infinite alternate ease-in-out;
+}
+
+.orb.one {
+    width: 300px;
+    height: 300px;
+    background: white;
+    top: 5%;
+    left: -100px;
+}
+
+.orb.two {
+    width: 250px;
+    height: 250px;
+    background: #888;
+    right: -80px;
+    bottom: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes moveOrb {
+    from {
+        transform: translate(0,0) scale(1);
     }
-
-    html {
-      scroll-behavior: smooth;
+    to {
+        transform: translate(120px,80px) scale(1.3);
     }
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,.06), transparent 25%),
-        linear-gradient(135deg, #050505, #111, #020202);
-      color: white;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+/* YILDIZLAR */
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .5;
+    animation: twinkle 3s infinite alternate;
+}
 
-    /* ARKA PLAN PARÇACIKLARI */
-    .particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
+.star:nth-child(3) { left: 10%; top: 20%; }
+.star:nth-child(4) { left: 20%; top: 70%; animation-delay: 1s; }
+.star:nth-child(5) { left: 35%; top: 15%; animation-delay: 2s; }
+.star:nth-child(6) { left: 50%; top: 80%; animation-delay: .5s; }
+.star:nth-child(7) { left: 70%; top: 25%; animation-delay: 1.5s; }
+.star:nth-child(8) { left: 85%; top: 65%; animation-delay: 2.5s; }
+.star:nth-child(9) { left: 92%; top: 12%; animation-delay: .8s; }
 
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: white;
-      border-radius: 50%;
-      opacity: .25;
-      animation: float 10s infinite linear;
-    }
+@keyframes twinkle {
+    from { opacity: .15; transform: scale(.6); }
+    to { opacity: .9; transform: scale(1.5); }
+}
 
-    .particle:nth-child(1) { left: 5%; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 15%; animation-delay: 2s; }
-    .particle:nth-child(3) { left: 25%; animation-delay: 4s; }
-    .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
-    .particle:nth-child(5) { left: 55%; animation-delay: 3s; }
-    .particle:nth-child(6) { left: 70%; animation-delay: 5s; }
-    .particle:nth-child(7) { left: 85%; animation-delay: 2s; }
-    .particle:nth-child(8) { left: 95%; animation-delay: 6s; }
+/* ANA */
+.hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
 
-    @keyframes float {
-      from {
-        transform: translateY(110vh) scale(.5);
-      }
-      to {
-        transform: translateY(-10vh) scale(1.5);
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    /* ANA ALAN */
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 30px 20px;
-    }
+    text-align: center;
+    padding: 30px 20px;
+}
 
-    /* PARLAYAN HALO */
-    .logo-wrapper {
-      position: relative;
-      margin-bottom: 25px;
-      animation: logoFloat 3s ease-in-out infinite;
-    }
+/* LOGO */
+.logo-area {
+    position: relative;
+    margin-bottom: 25px;
+    animation: floating 4s ease-in-out infinite;
+}
 
-    .logo-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: -30px;
-      border-radius: 50%;
-      background: radial-gradient(
+.logo-area::before {
+    content: "";
+    position: absolute;
+    inset: -45px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
         circle,
-        rgba(255,255,255,.20),
+        rgba(255,255,255,.22),
         transparent 65%
-      );
-      filter: blur(15px);
-      animation: glow 2s ease-in-out infinite alternate;
+    );
+
+    filter: blur(20px);
+    animation: logoGlow 2.5s infinite alternate;
+}
+
+.logo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 8px white)
+        drop-shadow(0 0 25px rgba(255,255,255,.35));
+
+    transition: .5s;
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(4deg);
+
+    filter:
+        drop-shadow(0 0 15px white)
+        drop-shadow(0 0 45px rgba(255,255,255,.5));
+}
+
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
     }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes logoGlow {
+    from {
+        transform: scale(.8);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* BAŞLIK */
+.title {
+    font-size: clamp(48px, 11vw, 100px);
+    font-weight: 1000;
+    letter-spacing: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #777,
+        white,
+        #555,
+        white,
+        #777
+    );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: titleShine 5s linear infinite;
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,.15);
+}
+
+@keyframes titleShine {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+.subtitle {
+    margin-top: 8px;
+
+    font-size: 15px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    color: #aaa;
+}
+
+/* AYRAÇ */
+.line {
+    width: 180px;
+    height: 2px;
+
+    margin: 25px 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        white,
+        transparent
+    );
+
+    box-shadow: 0 0 15px white;
+}
+
+/* SAAT */
+.clock-box {
+    padding: 18px 35px;
+
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.06);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.05),
+        inset 0 0 20px rgba(255,255,255,.04);
+
+    transition: .4s;
+}
+
+.clock-box:hover {
+    transform: scale(1.04);
+
+    border-color: rgba(255,255,255,.6);
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.15);
+}
+
+.clock-label {
+    font-size: 11px;
+    color: #888;
+
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+}
+
+#clock {
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+/* BUTONLAR */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+
+    min-width: 210px;
+
+    padding: 15px 25px;
+
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,.25);
+
+    background: rgba(255,255,255,.06);
+
+    color: white;
+    text-decoration: none;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    backdrop-filter: blur(12px);
+
+    transition: .35s;
+}
+
+.btn::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.3),
+        transparent
+    );
+
+    transition: .6s;
+}
+
+.btn:hover::before {
+    left: 120%;
+}
+
+.btn:hover {
+    transform: translateY(-6px) scale(1.04);
+
+    border-color: white;
+
+    background: rgba(255,255,255,.12);
+
+    box-shadow:
+        0 10px 35px rgba(255,255,255,.12);
+}
+
+/* INSTAGRAM */
+.instagram {
+    border-color: rgba(255,120,180,.35);
+}
+
+.instagram:hover {
+    border-color: #ff8ac2;
+
+    box-shadow:
+        0 0 30px rgba(255,80,160,.25);
+}
+
+/* HAKKIMIZDA */
+.about {
+    position: relative;
+    z-index: 2;
+
+    padding: 90px 20px;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    color: #999;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+.about-card {
+    margin-top: 35px;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.04);
+
+    backdrop-filter: blur(15px);
+
+    transition: .4s;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(255,255,255,.4);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.5);
+}
+
+/* OK */
+.scroll {
+    position: absolute;
+
+    bottom: 25px;
+
+    color: #777;
+
+    font-size: 28px;
+
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* FOOTER */
+footer {
+    position: relative;
+    z-index: 2;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #666;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+footer strong {
+    color: white;
+}
+
+/* MOBİL */
+@media(max-width:600px) {
 
     .logo {
-      position: relative;
-      width: 190px;
-      height: 190px;
-      object-fit: contain;
-      filter:
-        drop-shadow(0 0 10px rgba(255,255,255,.5))
-        drop-shadow(0 0 30px rgba(255,255,255,.2));
-      transition: .4s;
+        width: 155px;
+        height: 155px;
     }
 
-    .logo:hover {
-      transform: scale(1.08) rotate(-3deg);
-      filter:
-        drop-shadow(0 0 15px white)
-        drop-shadow(0 0 40px rgba(255,255,255,.4));
-    }
-
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @keyframes glow {
-      from { opacity: .4; transform: scale(.9); }
-      to { opacity: 1; transform: scale(1.1); }
-    }
-
-    /* BAŞLIK */
-    h1 {
-      font-size: clamp(45px, 10vw, 90px);
-      font-weight: 900;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-
-      background: linear-gradient(
-        90deg,
-        #fff,
-        #aaa,
-        #fff,
-        #777,
-        #fff
-      );
-
-      background-size: 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      animation: shine 5s linear infinite;
-      text-shadow: 0 0 30px rgba(255,255,255,.15);
-    }
-
-    @keyframes shine {
-      0% { background-position: 0%; }
-      100% { background-position: 300%; }
+    .title {
+        letter-spacing: 3px;
     }
 
     .subtitle {
-      margin-top: 12px;
-      color: #bbb;
-      font-size: 18px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    /* CANLI SAAT */
-    .clock-box {
-      margin-top: 30px;
-      padding: 18px 35px;
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(10px);
-      box-shadow:
-        0 0 30px rgba(255,255,255,.05),
-        inset 0 0 20px rgba(255,255,255,.03);
-    }
-
-    .clock-label {
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 3px;
-      margin-bottom: 5px;
+        font-size: 11px;
+        letter-spacing: 3px;
     }
 
     #clock {
-      font-size: 32px;
-      font-weight: bold;
-      letter-spacing: 3px;
+        font-size: 27px;
     }
 
-    /* BUTONLAR */
+    .clock-box {
+        padding: 16px 25px;
+    }
+
     .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 35px;
+        width: 100%;
     }
 
     .btn {
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 15px 25px;
-      min-width: 190px;
-
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 1px;
-
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 14px;
-
-      background: rgba(255,255,255,.07);
-      backdrop-filter: blur(10px);
-
-      transition: .35s;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.25),
-        transparent
-      );
-      transition: .6s;
-    }
-
-    .btn:hover::before {
-      left: 120%;
-    }
-
-    .btn:hover {
-      transform: translateY(-5px) scale(1.03);
-      background: rgba(255,255,255,.14);
-      border-color: rgba(255,255,255,.7);
-      box-shadow: 0 10px 30px rgba(255,255,255,.12);
-    }
-
-    .instagram:hover {
-      box-shadow: 0 0 30px rgba(255,80,150,.25);
-    }
-
-    /* AŞAĞI OKU */
-    .scroll {
-      position: absolute;
-      bottom: 25px;
-      animation: bounce 1.5s infinite;
-      color: #888;
-      font-size: 25px;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
-
-    /* BİLGİ ALANI */
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 38px;
-      margin-bottom: 40px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      backdrop-filter: blur(12px);
-      text-align: center;
-      transition: .35s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,.4);
-      box-shadow: 0 15px 40px rgba(0,0,0,.4);
-    }
-
-    .card-icon {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #aaa;
-      line-height: 1.6;
-    }
-
-    /* KADRO */
-    .squad {
-      margin-top: 90px;
-    }
-
-    .players {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 18px;
-    }
-
-    .player {
-      text-align: center;
-      padding: 25px 15px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      transition: .3s;
-    }
-
-    .player:hover {
-      transform: scale(1.04);
-      background: rgba(255,255,255,.08);
-    }
-
-    .player-number {
-      font-size: 38px;
-      font-weight: 900;
-      color: #ddd;
-    }
-
-    .player-name {
-      margin-top: 8px;
-      font-weight: bold;
-    }
-
-    /* FOOTER */
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    /* MOBİL */
-    @media (max-width: 600px) {
-
-      .logo {
-        width: 145px;
-        height: 145px;
-      }
-
-      .subtitle {
-        font-size: 13px;
-        letter-spacing: 2px;
-      }
-
-      #clock {
-        font-size: 25px;
-      }
-
-      .clock-box {
-        padding: 15px 25px;
-      }
-
-      .btn {
         width: 100%;
-        max-width: 300px;
-      }
-
-      .content {
-        padding-top: 50px;
-      }
+        max-width: 320px;
     }
-  </style>
+
+    .about h2 {
+        font-size: 34px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PARÇACIKLAR -->
-  <div class="particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
+<!-- ARKA PLAN -->
+<div class="background">
 
-  <!-- ANA SAYFA -->
-  <section class="hero">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
 
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="BAYKUŞ FK Logo" class="logo">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+</div>
+
+
+<!-- ANA SAYFA -->
+<section class="hero">
+
+    <div class="logo-area">
+        <img
+            src="logo.png"
+            alt="BAYKUŞ FK"
+            class="logo"
+        >
     </div>
 
-    <h1>BAYKUŞ FK</h1>
+    <h1 class="title">
+        BAYKUŞ FK
+    </h1>
 
-    <div class="subtitle">
-      🦉 Futbol • Tutku • Mücadele ⚽
-    </div>
+    <p class="subtitle">
+        🦉 Resmi Takım Sitesi ⚽
+    </p>
 
-    <!-- SAAT -->
+    <div class="line"></div>
+
+
+    <!-- CANLI SAAT -->
     <div class="clock-box">
-      <div class="clock-label">CANLI SAAT</div>
-      <div id="clock">00:00:00</div>
+
+        <div class="clock-label">
+            CANLI SAAT
+        </div>
+
+        <div id="clock">
+            00:00:00
+        </div>
+
     </div>
+
 
     <!-- BUTONLAR -->
     <div class="buttons">
 
-      <a
-        class="btn instagram"
-        href="https://www.instagram.com/baykusfk.kemalpasa/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📸 Instagram
-      </a>
+        <a
+            class="btn instagram"
+            href="https://www.instagram.com/baykusfk.kemalpasa/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            📸 Instagram'a Git
+        </a>
 
-      
-      </a>
-
-      <a class="btn" href="#hakkimizda">
-        🦉 Hakkımızda
-      </a>
+        <a
+            class="btn"
+            href="#hakkimizda"
+        >
+            🦉 BAYKUŞ FK
+        </a>
 
     </div>
 
     <div class="scroll">
-      ↓
+        ↓
     </div>
 
-  </section>
+</section>
 
-  <!-- HAKKIMIZDA -->
-  <section class="content" id="hakkimizda">
 
-    <h2 class="section-title">
-      BAYKUŞ FK
+<!-- HAKKIMIZDA -->
+<section
+    class="about"
+    id="hakkimizda"
+>
+
+    <h2>
+        🦉 BAYKUŞ FK
     </h2>
 
-    <div class="cards">
+    <p>
+        Sahada mücadele, takım ruhu ve futbol sevgisi.
+        <br>
+        BAYKUŞ FK ailesine hoş geldin.
+    </p>
 
-      <div class="card">
-        <div class="card-icon">🦉</div>
-        <h3>Biz Kimiz?</h3>
-        <p>
-          Sahada mücadele eden, takım ruhuna ve dostluğa önem veren
-          BAYKUŞ FK.
-        </p>
-      </div>
+    <div class="about-card">
 
-      <div class="card">
-        <div class="card-icon">⚽</div>
-        <h3>Futbol</h3>
-        <p>
-          Her maçta son dakikaya kadar mücadele,
-          her pozisyonda takım ruhu.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🔥</div>
-        <h3>Mücadele</h3>
-        <p>
-          Pes etmek yok. Sahaya çıktığımız anda
-          mücadele başlar.
-        </p>
-      </div>
-
-    </div>
-
-  
-      </h2>
-
-     
+        <div style="font-size:50px;">
+            ⚽
         </div>
 
-      </div>
+        <h3 style="margin:15px 0;">
+            MÜCADELE • TAKIM • RUH
+        </h3>
+
+        <p>
+            Her maç yeni bir mücadele,
+            her dakika takım için.
+        </p>
 
     </div>
 
-  </section>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
+
+<!-- FOOTER -->
+<footer>
+
     <p>
-      © 2026 <strong>BAYKUŞ FK</strong> — Tüm hakları saklıdır.
+        © 2026
+        <strong>BAYKUŞ FK</strong>
     </p>
+
     <p style="margin-top:8px;">
-      🦉 BAYKUŞ FK • Kemalpaşa ⚽
+        🦉 Kemalpaşa • Futbol • Tutku
     </p>
-  </footer>
+
+</footer>
 
 
-  <!-- CANLI SAAT JAVASCRIPT -->
-  <script>
+<script>
 
-    function updateClock() {
+/* TÜRKİYE SAATİ */
+function updateClock() {
 
-      const now = new Date();
+    const now = new Date();
 
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
-      const seconds = String(now.getSeconds()).padStart(2, "0");
+    const time = new Intl.DateTimeFormat(
+        "tr-TR",
+        {
+            timeZone: "Europe/Istanbul",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+        }
+    ).format(now);
 
-      document.getElementById("clock").textContent =
-        `${hours}:${minutes}:${seconds}`;
-    }
+    document.getElementById("clock").textContent = time;
+}
 
-    updateClock();
+updateClock();
 
-    setInterval(updateClock, 1000);
+setInterval(updateClock, 1000);
 
-  </script>
+</script>
 
 </body>
 </html>
+```
+
