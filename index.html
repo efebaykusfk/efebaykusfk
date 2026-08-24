@@ -1,9 +1,8 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BAYKUŞ FK 🦉⚽</title>
 
@@ -21,9 +20,8 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-
     font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
+    color: white;
 
     background:
         radial-gradient(circle at 50% 18%, rgba(255,255,255,.12), transparent 25%),
@@ -32,50 +30,37 @@ body {
         #030303;
 }
 
-/* =========================
-   ARKA PLAN
-========================= */
-
+/* ARKA PLAN */
 .background {
     position: fixed;
     inset: 0;
-
     overflow: hidden;
     pointer-events: none;
-
     z-index: 0;
 }
 
 .orb {
     position: absolute;
-
     border-radius: 50%;
     filter: blur(80px);
-
     opacity: .16;
-
     animation: orbMove 12s ease-in-out infinite alternate;
 }
 
 .orb.one {
     width: 320px;
     height: 320px;
-
     top: -100px;
     left: -100px;
-
-    background: #fff;
+    background: white;
 }
 
 .orb.two {
     width: 280px;
     height: 280px;
-
     right: -100px;
     bottom: -80px;
-
     background: #888;
-
     animation-delay: 3s;
 }
 
@@ -90,19 +75,13 @@ body {
 }
 
 /* YILDIZLAR */
-
 .star {
     position: absolute;
-
     width: 3px;
     height: 3px;
-
     border-radius: 50%;
-
-    background: #fff;
-
+    background: white;
     opacity: .45;
-
     animation: starBlink 3s ease-in-out infinite alternate;
 }
 
@@ -126,10 +105,7 @@ body {
     }
 }
 
-/* =========================
-   ANA ALAN
-========================= */
-
+/* ANA ALAN */
 .hero {
     position: relative;
     z-index: 2;
@@ -143,20 +119,13 @@ body {
 
     text-align: center;
 
-    padding:
-        40px
-        clamp(20px, 5vw, 80px);
+    padding: 40px clamp(20px, 5vw, 80px);
 }
 
-/* =========================
-   LOGO
-========================= */
-
+/* LOGO */
 .logo-area {
     position: relative;
-
     margin-bottom: clamp(15px, 2vw, 25px);
-
     animation: floating 4s ease-in-out infinite;
 }
 
@@ -164,7 +133,6 @@ body {
     content: "";
 
     position: absolute;
-
     inset: -40px;
 
     border-radius: 50%;
@@ -195,9 +163,7 @@ body {
         drop-shadow(0 0 8px #fff)
         drop-shadow(0 0 28px rgba(255,255,255,.35));
 
-    transition:
-        transform .4s ease,
-        filter .4s ease;
+    transition: .4s;
 }
 
 .logo:hover {
@@ -230,10 +196,7 @@ body {
     }
 }
 
-/* =========================
-   BAŞLIK
-========================= */
-
+/* BAŞLIK */
 .title {
     max-width: 100%;
 
@@ -265,9 +228,6 @@ body {
     -webkit-text-fill-color: transparent;
 
     animation: titleShine 5s linear infinite;
-
-    text-shadow:
-        0 0 25px rgba(255,255,255,.15);
 }
 
 @keyframes titleShine {
@@ -292,24 +252,19 @@ body {
     text-transform: uppercase;
 }
 
-/* =========================
-   ÇİZGİ
-========================= */
-
+/* ÇİZGİ */
 .line {
     width: clamp(130px, 20vw, 210px);
 
     height: 2px;
 
-    margin:
-        clamp(18px, 3vw, 28px)
-        0;
+    margin: clamp(18px, 3vw, 28px) 0;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            #fff,
+            white,
             transparent
         );
 
@@ -317,10 +272,7 @@ body {
         0 0 15px rgba(255,255,255,.7);
 }
 
-/* =========================
-   SAAT
-========================= */
-
+/* SAAT */
 .clock-box {
     min-width: min(280px, 90vw);
 
@@ -332,8 +284,7 @@ body {
 
     border: 1px solid rgba(255,255,255,.22);
 
-    background:
-        rgba(255,255,255,.055);
+    background: rgba(255,255,255,.055);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -348,8 +299,7 @@ body {
 .clock-box:hover {
     transform: translateY(-3px) scale(1.03);
 
-    border-color:
-        rgba(255,255,255,.6);
+    border-color: rgba(255,255,255,.6);
 
     box-shadow:
         0 0 35px rgba(255,255,255,.15);
@@ -375,10 +325,7 @@ body {
     font-variant-numeric: tabular-nums;
 }
 
-/* =========================
-   BUTONLAR
-========================= */
-
+/* BUTONLAR */
 .buttons {
     width: 100%;
 
@@ -413,10 +360,9 @@ body {
 
     border: 1px solid rgba(255,255,255,.22);
 
-    background:
-        rgba(255,255,255,.055);
+    background: rgba(255,255,255,.055);
 
-    color: #fff;
+    color: white;
 
     text-decoration: none;
 
@@ -429,11 +375,7 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    transition:
-        transform .3s ease,
-        background .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
+    transition: .3s;
 }
 
 .btn::before {
@@ -465,32 +407,67 @@ body {
 .btn:hover {
     transform: translateY(-5px) scale(1.03);
 
-    background:
-        rgba(255,255,255,.12);
+    background: rgba(255,255,255,.12);
 
-    border-color: #fff;
+    border-color: white;
 
     box-shadow:
         0 12px 35px rgba(255,255,255,.12);
 }
 
 .instagram {
-    border-color:
-        rgba(255,120,180,.35);
+    border-color: rgba(255,120,180,.35);
 }
 
 .instagram:hover {
-    border-color:
-        #ff8ac2;
+    border-color: #ff8ac2;
 
     box-shadow:
         0 0 30px rgba(255,80,160,.25);
 }
 
-/* =========================
-   AŞAĞI OK
-========================= */
+/* MÜZİK BUTONU */
+#musicButton {
+    position: fixed;
 
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 9999;
+
+    padding: 12px 18px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 14px;
+
+    background: rgba(15,15,15,.72);
+
+    color: white;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+#musicButton:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255,255,255,.13);
+
+    border-color: rgba(255,255,255,.6);
+
+    box-shadow:
+        0 8px 25px rgba(255,255,255,.1);
+}
+
+/* OK */
 .scroll {
     position: absolute;
 
@@ -500,8 +477,7 @@ body {
 
     font-size: 27px;
 
-    animation:
-        bounce 1.5s infinite;
+    animation: bounce 1.5s infinite;
 }
 
 @keyframes bounce {
@@ -514,10 +490,7 @@ body {
     }
 }
 
-/* =========================
-   HAKKIMIZDA
-========================= */
-
+/* HAKKIMIZDA */
 .about {
     position: relative;
 
@@ -551,8 +524,7 @@ body {
 .about-card {
     margin-top: 35px;
 
-    padding:
-        clamp(25px, 5vw, 40px);
+    padding: clamp(25px, 5vw, 40px);
 
     border-radius: 25px;
 
@@ -596,17 +568,13 @@ body {
     line-height: 1.6;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 footer {
     position: relative;
 
     z-index: 2;
 
-    padding:
-        30px 20px;
+    padding: 30px 20px;
 
     text-align: center;
 
@@ -619,13 +587,10 @@ footer {
 }
 
 footer strong {
-    color: #fff;
+    color: white;
 }
 
-/* =========================
-   TABLET
-========================= */
-
+/* TABLET */
 @media (max-width: 900px) {
 
     .hero {
@@ -641,25 +606,11 @@ footer strong {
     }
 }
 
-/* =========================
-   TELEFON
-========================= */
-
+/* TELEFON */
 @media (max-width: 600px) {
-
-    body {
-        background:
-            radial-gradient(
-                circle at 50% 15%,
-                rgba(255,255,255,.10),
-                transparent 30%
-            ),
-            #030303;
-    }
 
     .background .orb {
         filter: blur(60px);
-
         opacity: .10;
     }
 
@@ -667,9 +618,7 @@ footer strong {
         min-height: 100svh;
 
         padding:
-            35px
-            18px
-            65px;
+            35px 18px 65px;
     }
 
     .logo {
@@ -679,28 +628,22 @@ footer strong {
 
     .logo-area::before {
         inset: -28px;
-
         filter: blur(15px);
     }
 
     .title {
-        font-size:
-            clamp(38px, 12vw, 58px);
-
+        font-size: clamp(38px, 12vw, 58px);
         letter-spacing: 2px;
     }
 
     .subtitle {
         margin-top: 10px;
-
         font-size: 10px;
-
         letter-spacing: 2px;
     }
 
     .line {
         width: 130px;
-
         margin: 20px 0;
     }
 
@@ -716,7 +659,6 @@ footer strong {
 
     #clock {
         font-size: 27px;
-
         letter-spacing: 3px;
     }
 
@@ -737,21 +679,26 @@ footer strong {
 
         min-height: 54px;
 
-        padding: 15px 20px;
-
         font-size: 14px;
+    }
+
+    #musicButton {
+        right: 12px;
+        bottom: 12px;
+
+        padding: 10px 14px;
+
+        font-size: 13px;
     }
 
     .scroll {
         bottom: 15px;
-
         font-size: 24px;
     }
 
     .about {
         padding:
-            65px
-            18px;
+            65px 18px;
     }
 
     .about-card {
@@ -760,16 +707,11 @@ footer strong {
 
     footer {
         font-size: 13px;
-
-        padding:
-            25px 15px;
+        padding: 25px 15px;
     }
 }
 
-/* =========================
-   ÇOK KÜÇÜK TELEFON
-========================= */
-
+/* ÇOK KÜÇÜK TELEFON */
 @media (max-width: 380px) {
 
     .hero {
@@ -800,10 +742,7 @@ footer strong {
     }
 }
 
-/* =========================
-   DOKUNMATİK EKRAN
-========================= */
-
+/* DOKUNMATİK */
 @media (hover: none) {
 
     .btn:hover,
@@ -818,10 +757,7 @@ footer strong {
     }
 }
 
-/* =========================
-   HAREKET AZALTMA
-========================= */
-
+/* HAREKET AZALTMA */
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -836,6 +772,16 @@ footer strong {
 </head>
 
 <body>
+
+<!-- MÜZİK -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton">
+    🎵 Müziği Aç
+</button>
+
 
 <!-- ARKA PLAN -->
 <div class="background">
@@ -982,9 +928,7 @@ footer strong {
 
 <script>
 
-/* =========================
-   TÜRKİYE CANLI SAAT
-========================= */
+/* TÜRKİYE SAATİ */
 
 function updateClock() {
 
@@ -1006,15 +950,40 @@ function updateClock() {
     document.getElementById("clock").textContent = time;
 }
 
-
 updateClock();
 
 setInterval(updateClock, 1000);
+
+
+/* MÜZİK */
+
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+music.volume = 0.18;
+
+musicButton.addEventListener("click", function() {
+
+    if (music.paused) {
+
+        music.play()
+        .then(function() {
+            musicButton.textContent = "🔇 Müziği Kapat";
+        })
+        .catch(function() {
+            musicButton.textContent = "🎵 Tekrar Dene";
+        });
+
+    } else {
+
+        music.pause();
+
+        musicButton.textContent = "🎵 Müziği Aç";
+    }
+
+});
 
 </script>
 
 </body>
 </html>
-```
-
-
